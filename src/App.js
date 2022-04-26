@@ -10,6 +10,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import Axios from 'axios';
 import Discover from './travish/Discover';
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 
@@ -22,10 +23,14 @@ export default class App extends Component {
   }
 
   registerHandler = (user) => {
-    Axios
-      .post("auth/signup", user)
+    Axios.post("auth/signup", user)
       .then(response => {
+        this.setState({
+          user: response.data,
+          isAuth: true
+        })
         console.log(response);
+
       })
       .catch(error => {
         console.log(error);
@@ -35,12 +40,18 @@ export default class App extends Component {
   loginHandler = (cred) => {
     Axios.post("auth/signin", cred)
       .then(response => {
+        this.setState({
+          user: response.data,
+          isAuth: true
+        })
         console.log(response.data.token);
       })
       .catch(error => {
         console.log(error);
       })
   }
+
+  
 
   render() {
     return (
@@ -53,11 +64,18 @@ export default class App extends Component {
             <Container>
               <Navbar.Brand href="#home">Travish</Navbar.Brand>
               <Nav className="me-auto">
-                <Nav.Link href="/Home">Home</Nav.Link>
-                <Nav.Link href="/signup">Signup</Nav.Link>
-                <Nav.Link href="/signin">Signin</Nav.Link>
-                <Nav.Link href="/discover">Discover</Nav.Link>
-                <Nav.Link href="/wishList">Wish List</Nav.Link>
+                
+                {this.state.isAuth ?
+                 <Link to="/wishList">Wish List</Link>
+                 :
+                 <>
+                 <Link to="/home">Home</Link> 
+                 <Link to="/discovery">Discovery</Link>
+                
+                <Link to="/signup">Signup</Link>
+                <Link to="/signin">Signin</Link>
+                </>
+                }
               </Nav>
             </Container>
           </Navbar>
@@ -78,16 +96,15 @@ export default class App extends Component {
             </div>
           </nav> */}
 
-          <div>
+          
             <Routes>
-              {/* <Route path="/" element={<AuthorList/>}></Route> */}
               <Route path="/signup" element={<Signup register={this.registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={this.loginHandler} />}></Route>
               <Route path="/home" element={<Home/>}></Route>
               <Route path="/discover" element={<Discover/>}></Route>
               <Route path="/wishList" element={<WishListList/>}></Route>
             </Routes>
-          </div>
+          
 
 
         </Router>

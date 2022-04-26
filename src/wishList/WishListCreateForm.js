@@ -24,8 +24,9 @@ constructor(props) {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.addList(this.state.newWishList)
+        this.props.addWishList(this.state.newWishList)
     }
+    
 
 
 

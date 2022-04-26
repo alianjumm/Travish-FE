@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Axios from "axios";
 import WishList from "./WishList"
 import WishListCreateForm from "./WishListCreateForm";
 import WishListEditForm from "./WishListEditForm";
+import axios from "axios";
 
 export default class WishListList extends Component {
 
@@ -20,35 +20,37 @@ export default class WishListList extends Component {
         this.loadWishList();
     }
 
-    loadWishList = () => {
-        Axios.get("wishList/index")
-            .then((response) => {
-                console.log(response.data.wishLists);
-                this.setState({
-                    wishLists: response.data.wishLists
-                })
-            })
-            .catch((error) => {
-                console.log("Error Fetching Wishlist!!!");
-                console.log(error);
-            })
+    loadWishList = async() => {
+        let res = await axios.get("/wishList/index")
+        this.setState({wishLists: res.data})
+        // Axios.get("/wishList/index")
+        //     .then((response) => {
+        //         console.log(response.data.wishLists);
+        //         this.setState({
+        //             wishLists: response.data.wishLists
+        //         })
+        //     })
+        //     .catch((error) => {
+        //         console.log("Error Fetching Wishlist!!!");
+        //         console.log(error);
+        //     })
 
     }
 
-    loadWishList = (wishList) => {
-        console.log(wishList)
-        if (wishList.vacation) {
-            const vacations = wishList.vacation.map((vacation, key) => (
-                <td key={key}>
-                    <li> {vacation.name} </li>
-                </td>
-            ));
-            return vacations;
-        }
-    }
+    // loadWishList = (wishList) => {
+    //     console.log(wishList)
+    //     if (wishList.vacation) {
+    //         const vacations = wishList.vacation.map((vacation, key) => (
+    //             <td key={key}>
+    //                 <li> {vacation.name} </li>
+    //             </td>
+    //         ));
+    //         return vacations;
+    //     }
+    // }
 
     addWishList = (wishList) => {
-        Axios.post("wishList/add", wishList)
+        axios.post("wishList/add", wishList)
             .then((response) => {
                 console.log("WishList Added successfully!!!")
                 this.loadWishList();
@@ -59,25 +61,25 @@ export default class WishListList extends Component {
             })
     }
 
-    editList = (id) => {
-        Axios.get((`wishList/edit?id=${id}`))
-            .then(response => {
-                console.log("Loaded WishList Information!!!")
-                console.log(response.data.wishList);
-                var wishList = response.data.wishList;
-                this.setState({
-                    isEdit: true,
-                    currentWishList: wishList
-                })
-            })
-            .catch(error => {
-                console.log("Error Loading Wish List Information");
-                console.log(error)
-            })
-    }
+    // editList = (id) => {
+    //     Axios.get((`wishList/edit?id=${id}`))
+    //         .then(response => {
+    //             console.log("Loaded WishList Information!!!")
+    //             console.log(response.data.wishList);
+    //             var wishList = response.data.wishList;
+    //             this.setState({
+    //                 isEdit: true,
+    //                 currentWishList: wishList
+    //             })
+    //         })
+    //         .catch(error => {
+    //             console.log("Error Loading Wish List Information");
+    //             console.log(error)
+    //         })
+    // }
 
     editWishList = (wishList) => {
-        Axios.put("wishList/update", wishList)
+        axios.put("wishList/update", wishList)
             .then(response => {
                 console.log("Wish List Updated!!!");
                 console.log(response);
@@ -90,7 +92,7 @@ export default class WishListList extends Component {
     }
 
     deleteWishList = (id) => {
-        Axios.delete(`wishList/delete?id=${id}`)
+        axios.delete(`wishList/delete?id=${id}`)
             .then(response => {
                 console.log("Deleted Wish List!!!")
                 this.loadWishList();
@@ -106,7 +108,6 @@ export default class WishListList extends Component {
         const allWishLists = this.state.wishLists.map((wishList, index) => {
             return <tr key={index}>
                 <WishList {...wishList} editView={this.editView} deleteWishList={this.deleteWishList}></WishList>
-                {this.loadWishList(wishList)}
             </tr>
         })
 
@@ -128,7 +129,7 @@ export default class WishListList extends Component {
                     <WishListCreateForm addWishList={this.addWishList}></WishListCreateForm> :
                     <WishListEditForm key={this.state.currentWishList._id}
                         wishList={this.state.currentWishList}
-                        editWishList={this.editWishList}></WishListEditForm>
+                        ></WishListEditForm>
                 }
 
             </div>

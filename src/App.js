@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import WishListList from './wishList/WishListList'
 
 import Signup from './user/Signup'
 import Signin from './user/Signin'
+import Home from './travish/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import Axios from 'axios';
+import Discover from './travish/Discover';
 
 
 
@@ -50,9 +53,11 @@ export default class App extends Component {
             <Container>
               <Navbar.Brand href="#home">Travish</Navbar.Brand>
               <Nav className="me-auto">
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/Home">Home</Nav.Link>
                 <Nav.Link href="/signup">Signup</Nav.Link>
                 <Nav.Link href="/signin">Signin</Nav.Link>
+                <Nav.Link href="/discover">Discover</Nav.Link>
+                <Nav.Link href="/wishList">Wish List</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
@@ -78,6 +83,9 @@ export default class App extends Component {
               {/* <Route path="/" element={<AuthorList/>}></Route> */}
               <Route path="/signup" element={<Signup register={this.registerHandler} />}></Route>
               <Route path="/signin" element={<Signin login={this.loginHandler} />}></Route>
+              <Route path="/home" element={<Home/>}></Route>
+              <Route path="/discover" element={<Discover/>}></Route>
+              <Route path="/wishList" element={<WishListList/>}></Route>
             </Routes>
           </div>
 

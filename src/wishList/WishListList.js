@@ -5,6 +5,8 @@ import WishListEditForm from "./WishListEditForm";
 import axios from "axios";
 import { Navbar, Nav, Container, Card, Button } from 'react-bootstrap';
 
+
+let token = localStorage.getItem("token") 
 export default class WishListList extends Component {
 
     constructor(props) {
@@ -139,6 +141,8 @@ export default class WishListList extends Component {
                 </table>
             </div>
             <div>
+                 
+                
                 {(!this.state.isEdit) ?
                     <WishListCreateForm addWishList={this.addWishList}></WishListCreateForm> :
                     <WishListEditForm key={this.state.currentWishList._id}
@@ -147,7 +151,7 @@ export default class WishListList extends Component {
                         editList={this.editList}
                     ></WishListEditForm>
                 }
-
+                
             </div>
         </div>;
     }

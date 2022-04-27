@@ -26,6 +26,7 @@ export default class VacationList extends Component {
     }
 
     addVacation = (vacation) => {
+        console.log(vacation)
         axios.post("/vacation/add", vacation)
         .then((response) => {
             console.log("vacation added successfully!")
@@ -50,6 +51,7 @@ export default class VacationList extends Component {
     }
 
   render() {
+      console.log(this.state.vacations)
     const allVacations = this.state.vacations.map((vacation, index) => {
         return <tr key={index}>
             <Vacation {...vacation} deleteVacation={this.deleteVacation}></Vacation>

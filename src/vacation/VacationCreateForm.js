@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+const token = localStorage.getItem("token")
+console.log(token)
 export default class VacationCreateForm extends Component {
 
 constructor(props) {
@@ -9,6 +10,8 @@ constructor(props) {
      newVacation: {}
   }
 }
+
+
 
     handleChange = (event) => {
         const attributeToChange = event.target.name;
@@ -45,11 +48,16 @@ constructor(props) {
 
               <div>
                   <label>Flights</label>
-                  <input name="description" type="text" onChange={this.handleChange}></input>
+                  <input name="flight" type="text" onChange={this.handleChange}></input>
               </div>
 
               <div>
                   <label>Activities</label>
+                  <input name="visited" type="text" onChange={this.handleChange}></input>
+              </div>
+
+              <div>
+                  <label>WishList</label>
                   <input name="visited" type="text" onChange={this.handleChange}></input>
               </div>
 

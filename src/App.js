@@ -13,6 +13,7 @@ import Axios from 'axios';
 import Discover from './travish/Discover';
 import jwtDecode from 'jwt-decode'
 import {LinkContainer} from 'react-router-bootstrap'
+import VacationList from './vacation/VacationList';
 
 
 
@@ -100,6 +101,8 @@ export default class App extends Component {
                  <>
                  <Link to="/wishList">Wish List</Link>
                  <Link to="/signout" onClick={this.logoutHandler}>Logout</Link>
+                 <Link to="/discovery">Discovery</Link>
+                 <Link to="/myVacations">My Vacations</Link>
                  </>
                  :
                  <>
@@ -138,6 +141,7 @@ export default class App extends Component {
               <Route path="/discover" element={<Discover/>}></Route>
               <Route path="/wishList" element={<WishListList/>}></Route>
               <Route path="/signout" element={<Logout logout={this.logoutHandler}/>}></Route>
+              <Route path="/myVacations" element={<VacationList/>}></Route>
             </Routes>
           
 

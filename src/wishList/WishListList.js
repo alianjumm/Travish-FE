@@ -3,7 +3,10 @@ import WishList from "./WishList"
 import WishListCreateForm from "./WishListCreateForm";
 import WishListEditForm from "./WishListEditForm";
 import axios from "axios";
+import { Navbar, Nav, Container, Card, Button } from 'react-bootstrap';
 
+
+let token = localStorage.getItem("token") 
 export default class WishListList extends Component {
 
     constructor(props) {
@@ -20,9 +23,9 @@ export default class WishListList extends Component {
         this.loadWishList();
     }
 
-    loadWishList = async() => {
+    loadWishList = async () => {
         let res = await axios.get("/wishList/index")
-        this.setState({wishLists: res.data})
+        this.setState({ wishLists: res.data })
         // Axios.get("/wishList/index")
         //     .then((response) => {
         //         console.log(response.data.wishLists);
@@ -119,21 +122,36 @@ export default class WishListList extends Component {
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
+                            <th>Vacations</th>
                         </tr>
+                        {this.state.wishLists.map(function(wishList){
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src="holder.js/100px180" />
+                            <Card.Body>
+                                <Card.Title>{wishList.name}</Card.Title>
+                                <Card.Text>
+                                    {wishList.name}
+                                </Card.Text>
+                                <Button variant="primary">Go somewhere</Button>
+                            </Card.Body>
+                        </Card>
+                        })}
                         {allWishLists}
                     </tbody>
                 </table>
             </div>
             <div>
+                 
+                
                 {(!this.state.isEdit) ?
                     <WishListCreateForm addWishList={this.addWishList}></WishListCreateForm> :
                     <WishListEditForm key={this.state.currentWishList._id}
                         wishList={this.state.currentWishList}
                         editWishList={this.editWishList}
                         editList={this.editList}
-                        ></WishListEditForm>
+                    ></WishListEditForm>
                 }
-
+                
             </div>
         </div>;
     }

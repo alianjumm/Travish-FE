@@ -5,6 +5,7 @@ import Signup from './user/Signup'
 import Signin from './user/Signin'
 import Home from './travish/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Logout from './user/Logout';
 
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
@@ -51,7 +52,19 @@ export default class App extends Component {
       })
   }
 
-  
+  logoutHandler = (cred) => {
+    Axios.get("auth/logout", cred)
+      .then(response => {
+        this.setState({
+          user: response.data,
+          isAuth: false
+        })
+        console.log(response.data.token);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
   render() {
     return (
@@ -66,7 +79,10 @@ export default class App extends Component {
               <Nav className="me-auto">
                 
                 {this.state.isAuth ?
+                 <>
                  <Link to="/wishList">Wish List</Link>
+                 <Link to="/Logout">Logout</Link>
+                 </>
                  :
                  <>
                  <Link to="/home">Home</Link> 
@@ -103,6 +119,7 @@ export default class App extends Component {
               <Route path="/home" element={<Home/>}></Route>
               <Route path="/discover" element={<Discover/>}></Route>
               <Route path="/wishList" element={<WishListList/>}></Route>
+              <Route path="/logout" element={<Logout logout={this.logoutHandler}/>}></Route>
             </Routes>
           
 

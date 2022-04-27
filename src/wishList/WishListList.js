@@ -61,22 +61,22 @@ export default class WishListList extends Component {
             })
     }
 
-    // editList = (id) => {
-    //     Axios.get((`wishList/edit?id=${id}`))
-    //         .then(response => {
-    //             console.log("Loaded WishList Information!!!")
-    //             console.log(response.data.wishList);
-    //             var wishList = response.data.wishList;
-    //             this.setState({
-    //                 isEdit: true,
-    //                 currentWishList: wishList
-    //             })
-    //         })
-    //         .catch(error => {
-    //             console.log("Error Loading Wish List Information");
-    //             console.log(error)
-    //         })
-    // }
+    editList = (id) => {
+        axios.get((`wishList/edit?id=${id}`))
+            .then(response => {
+                console.log("Loaded WishList Information!!!")
+                console.log(response.data.wishList);
+                var wishList = response.data.wishList;
+                this.setState({
+                    isEdit: true,
+                    currentWishList: wishList
+                })
+            })
+            .catch(error => {
+                console.log("Error Loading Wish List Information");
+                console.log(error)
+            })
+    }
 
     editWishList = (wishList) => {
         axios.put("wishList/update", wishList)
@@ -107,7 +107,7 @@ export default class WishListList extends Component {
         console.log(this.state)
         const allWishLists = this.state.wishLists.map((wishList, index) => {
             return <tr key={index}>
-                <WishList {...wishList} editView={this.editView} deleteWishList={this.deleteWishList}></WishList>
+                <WishList {...wishList} editList={this.editList} editWishList={this.editWishList} deleteWishList={this.deleteWishList}></WishList>
             </tr>
         })
 
@@ -129,6 +129,8 @@ export default class WishListList extends Component {
                     <WishListCreateForm addWishList={this.addWishList}></WishListCreateForm> :
                     <WishListEditForm key={this.state.currentWishList._id}
                         wishList={this.state.currentWishList}
+                        editWishList={this.editWishList}
+                        editList={this.editList}
                         ></WishListEditForm>
                 }
 

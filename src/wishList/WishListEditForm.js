@@ -40,17 +40,17 @@ export default class WishListEditForm extends Component {
               </div>
 
               <div>
-                  <label>Email Address</label>
-                  <input name="emailAddress" type="text" onChange={this.handleChange}></input>
+                  <label>Description</label>
+                  <input name="description" type="text" onChange={this.handleChange}></input>
               </div>
 
               <div>
-                  <label>Phone Number</label>
-                  <input name="phoneNumber" type="number" onChange={this.handleChange}></input>
+                  <label>Visited ?</label>
+                  <input name="visited" type="boolean" onChange={this.handleChange}></input>
               </div>
 
                     <div>
-                        <input type="submit" value="Edit List"></input>
+                        <input type="submit" value="Save Changes"></input>
                     </div>
                 </form>
             </div>

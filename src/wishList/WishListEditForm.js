@@ -23,7 +23,7 @@ export default class WishListEditForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.editList(this.state.newWishList)
+        this.props.editWishList(this.state.newWishList)
     }
 
     render() {

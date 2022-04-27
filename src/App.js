@@ -11,6 +11,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import Axios from 'axios';
 import Discover from './travish/Discover';
+import jwtDecode from 'jwt-decode'
 import {LinkContainer} from 'react-router-bootstrap'
 
 
@@ -23,47 +24,64 @@ export default class App extends Component {
     message: null,
   }
 
-  registerHandler = (user) => {
-    Axios.post("auth/signup", user)
-      .then(response => {
+  componentDidMount(){
+    let token = localStorage.getItem("token");
+    if(token != null){
+      let user = jwtDecode(token)
+      if(user){
         this.setState({
-          user: response.data,
-          isAuth: true
+          isAuth: true,
+          user: user
         })
-        console.log(response);
-
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
-  loginHandler = (cred) => {
-    Axios.post("auth/signin", cred)
-      .then(response => {
+      }
+      else{
+        localStorage.removeItem("token")
         this.setState({
-          user: response.data,
-          isAuth: true
-        })
-        console.log(response.data.token);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
-  logoutHandler = (cred) => {
-    Axios.get("auth/logout", cred)
-      .then(response => {
-        this.setState({
-          user: response.data,
           isAuth: false
         })
-        console.log(response.data.token);
+      }
+    }
+  }
+
+  registerHandler = (user)=>{
+    Axios.post("auth/signup", user)
+    .then((result) => {
+      console.log(result)  
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loginHandler = (cred)=>{
+    Axios.post("auth/signin", cred)
+    .then((result) => {
+      console.log(result.data.token)
+      
+      if(result.data.token){
+        localStorage.setItem("token", result.data.token)
+        let user = jwtDecode(result.data.token)
+
+        this.setState({
+          isAuth: true,
+          user: user
+        })
+      }
+
+    }).catch((err) => {
+      console.log(err)
+      this.setState({
+        isAuth: false,
       })
-      .catch(error => {
-        console.log(error);
-      })
+    });
+  }
+
+  logoutHandler=(e)=>{
+    e.preventDefault()
+    localStorage.removeItem("token")
+    this.setState({
+      isAuth: false,
+      user: null
+    })
   }
 
   render() {
@@ -81,7 +99,7 @@ export default class App extends Component {
                 {this.state.isAuth ?
                  <>
                  <Link to="/wishList">Wish List</Link>
-                 <Link to="/Logout">Logout</Link>
+                 <Link to="/signout" onClick={this.logoutHandler}>Logout</Link>
                  </>
                  :
                  <>
@@ -119,7 +137,7 @@ export default class App extends Component {
               <Route path="/home" element={<Home/>}></Route>
               <Route path="/discover" element={<Discover/>}></Route>
               <Route path="/wishList" element={<WishListList/>}></Route>
-              <Route path="/logout" element={<Logout logout={this.logoutHandler}/>}></Route>
+              <Route path="/signout" element={<Logout logout={this.logoutHandler}/>}></Route>
             </Routes>
           
 

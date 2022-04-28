@@ -61,7 +61,7 @@ export default class WishListEditForm extends Component {
                     </Form.Group>
 
                     <div>
-                        <input type="submit" value="Save Changes"></input>
+                        <Button variant='dark' type="submit">Save Changes</Button>
                     </div>
                 </form>
             </div>

@@ -54,22 +54,6 @@ export default function WishListDetail(props) {
         </div>
 
     })
-
-    // const loadedVac = wishlist.vacation?.map((vacation, index) => {
-    //     return <div key={index}>
-    //         <Card style={{ width: '18rem' }}>
-    //             <Card.Body>
-    //                 <Card.Title>{vacation.destination}</Card.Title>
-    //                 <Card.Text>
-    //                     Flights: {vacation.flight}
-    //                 </Card.Text>
-    //                 <Button onClick = {()=>handleVacationDelete(vacation._id)} variant="primary">Delete</Button>
-    //             </Card.Body>
-    //         </Card>
-
-    //     </div>
-
-    // })
     return (
         <>
             {wishlist &&

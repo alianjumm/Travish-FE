@@ -12,7 +12,7 @@ export default function WishListDetail(props) {
 
     let loadOneList = async () => {
         let res = await axios.get(`/wishList/detail?id=${id}`)
-        console.log(res.data)
+        console.log(res.data.wishList.vacation)
         setWishList(res.data)
     }
 
@@ -36,7 +36,8 @@ export default function WishListDetail(props) {
     useEffect(() => {
         loadOneList()
         loadAllVac()
-    }, [])
+        
+    }, [wishlist])
 
     const allVacations = vacations?.map((vacation, index) => {
         return <div key={index}>
@@ -46,7 +47,7 @@ export default function WishListDetail(props) {
                     <Card.Text>
                         Flights: {vacation.flight}
                     </Card.Text>
-                    <Button onClick = {()=>handleVacationAdd(vacation._id)} variant="primary">Add</Button>
+                    <Button onClick={() => handleVacationAdd(vacation._id)} variant="primary">Add</Button>
                 </Card.Body>
             </Card>
 
@@ -54,21 +55,21 @@ export default function WishListDetail(props) {
 
     })
 
-    const loadedVac = vacations?.map((vacation, index) => {
-        return <div key={index}>
-            <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title>{vacation.destination}</Card.Title>
-                    <Card.Text>
-                        Flights: {vacation.flight}
-                    </Card.Text>
-                    <Button onClick = {()=>handleVacationDelete(vacation._id)} variant="primary">Delete</Button>
-                </Card.Body>
-            </Card>
+    // const loadedVac = wishlist.vacation?.map((vacation, index) => {
+    //     return <div key={index}>
+    //         <Card style={{ width: '18rem' }}>
+    //             <Card.Body>
+    //                 <Card.Title>{vacation.destination}</Card.Title>
+    //                 <Card.Text>
+    //                     Flights: {vacation.flight}
+    //                 </Card.Text>
+    //                 <Button onClick = {()=>handleVacationDelete(vacation._id)} variant="primary">Delete</Button>
+    //             </Card.Body>
+    //         </Card>
 
-        </div>
+    //     </div>
 
-    })
+    // })
     return (
         <>
             {wishlist &&
@@ -78,20 +79,35 @@ export default function WishListDetail(props) {
                         <p><b>Description:</b> {wishlist.wishList.description}</p>
 
                         {vacations &&
-                        <div>
-                            <h2>Vacations Added</h2>
-                            {loadedVac}
-                        </div>
+                            <div>
+                                <h2>Vacations Added</h2> 
+                                {wishlist.wishList.vacation.map((vacation, index) => { 
+                                   return <div key={index}>
+                                        
+                                        <Card style={{ width: '18rem' }}>
+                                            <Card.Body>
+                                                <Card.Title>{vacation.destination}</Card.Title>
+                                                <Card.Text>
+                                                    Flights: {vacation.flight}
+                                                </Card.Text>
+                                                <Button onClick={() => handleVacationDelete(vacation._id)} variant="primary">Delete</Button>
+                                            </Card.Body>
+                                        </Card>
+
+                                    </div>
+
+                                })
+                                }</div>
                         }
 
                         <br />
-                        
+
                         {vacations &&
-                        <div>
-                            <h2>All Vacations</h2>
-                            {allVacations}
-                        </div>
-                        
+                            <div>
+                                <h2>All Vacations</h2>
+                                {allVacations}
+                            </div>
+
                         }
                     </div>
                 </div>

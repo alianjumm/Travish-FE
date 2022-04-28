@@ -23,8 +23,14 @@ export default function WishListDetail(props) {
         console.log(res.data)
     }
 
-    let handleVacationAdd = async (vacationID) => {
-        await axios.post(`/wishList/addVac?wishListID=${id}?vacationID=${vacationID}`)
+    let handleVacationAdd = (vacationID) => {
+        console.log(vacationID)
+        axios.post(`/wishList/addVac/${id}/${vacationID}`)
+    }
+
+    let handleVacationDelete = (vacationID) => {
+        console.log(vacationID)
+        axios.delete(`/wishList/deleteVac/${id}/${vacationID}`)
     }
 
     useEffect(() => {
@@ -38,9 +44,25 @@ export default function WishListDetail(props) {
                 <Card.Body>
                     <Card.Title>{vacation.destination}</Card.Title>
                     <Card.Text>
-                        {vacation.flight}
+                        Flights: {vacation.flight}
                     </Card.Text>
                     <Button onClick = {()=>handleVacationAdd(vacation._id)} variant="primary">Add</Button>
+                </Card.Body>
+            </Card>
+
+        </div>
+
+    })
+
+    const loadedVac = vacations?.map((vacation, index) => {
+        return <div key={index}>
+            <Card style={{ width: '18rem' }}>
+                <Card.Body>
+                    <Card.Title>{vacation.destination}</Card.Title>
+                    <Card.Text>
+                        Flights: {vacation.flight}
+                    </Card.Text>
+                    <Button onClick = {()=>handleVacationDelete(vacation._id)} variant="primary">Delete</Button>
                 </Card.Body>
             </Card>
 
@@ -55,9 +77,12 @@ export default function WishListDetail(props) {
                     <div>
                         <p><b>Description:</b> {wishlist.wishList.description}</p>
 
+                        {vacations &&
                         <div>
                             <h2>Vacations Added</h2>
+                            {loadedVac}
                         </div>
+                        }
 
                         <br />
                         

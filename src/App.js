@@ -103,18 +103,18 @@ export default class App extends Component {
 
                 {this.state.isAuth ?
                   <>
-                    <Link to="/wishList">Wish List</Link>
-                    <Link to="/signout" onClick={this.logoutHandler}>Logout</Link>
-                    <Link to="/discovery">Discovery</Link>
-                    <Link to="/myVacations">My Vacations</Link>
+                    <Nav.Link href="/wishList">Wish List </Nav.Link>
+                    <Nav.Link href="/signout" onClick={this.logoutHandler}>Logout</Nav.Link>
+                    <Nav.Link href="/discovery">Discovery</Nav.Link>
+                    <Nav.Link href="/myVacations">My Vacations</Nav.Link>
                   </>
                   :
                   <>
-                    <Link to="/home">Home</Link>
-                    <Link to="/discovery">Discovery</Link>
+                    <Nav.Link href="/home">Home</Nav.Link>
+                    <Nav.Link href="/discovery">Discovery</Nav.Link>
 
-                    <Link to="/signup">Signup</Link>
-                    <Link to="/signin">Signin</Link>
+                    <Nav.Link href="/signup">Signup</Nav.Link>
+                    <Nav.Link href="/signin">Signin</Nav.Link>
                   </>
                 }
               </Nav>

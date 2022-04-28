@@ -7,7 +7,7 @@ import Home from './travish/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Logout from './user/Logout';
 
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Card } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import Axios from 'axios';
 import Discover from './travish/Discover';
@@ -96,7 +96,7 @@ export default class App extends Component {
 
 
           <br />
-          <Navbar bg="light" variant="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <Navbar.Brand href="#home">Travish</Navbar.Brand>
               <Nav className="me-auto">
@@ -120,6 +120,7 @@ export default class App extends Component {
               </Nav>
             </Container>
           </Navbar>
+                <hr></hr>
 
 
 
@@ -159,6 +160,8 @@ export default class App extends Component {
 
 
         </Router>
+        <h1>Welcome to Travish!</h1>
+        
       </div>
     )
   }

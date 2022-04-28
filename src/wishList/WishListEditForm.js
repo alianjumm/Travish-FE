@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap'
+
 
 export default class WishListEditForm extends Component {
     constructor(props) {
@@ -34,23 +36,32 @@ export default class WishListEditForm extends Component {
 
                 <form onSubmit={this.handleSubmit}>
 
-                <div>
-                  <label>Name</label>
-                  <input name="name" type="text" onChange={this.handleChange}></input>
-              </div>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control name="name" type="text" onChange={this.handleChange}></Form.Control>
+                        <Form.Text className="text-muted">
+                            Enter a name for your wishlist!
+                        </Form.Text>
+                    </Form.Group>
 
-              <div>
-                  <label>Description</label>
-                  <input name="description" type="text" onChange={this.handleChange}></input>
-              </div>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control name="description" type="text" onChange={this.handleChange}></Form.Control>
+                        <Form.Text className="text-muted">
+                            Enter a description for your wishlist!
+                        </Form.Text>
+                    </Form.Group>
 
-              <div>
-                  <label>Visited ?</label>
-                  <input name="visited" type="boolean" onChange={this.handleChange}></input>
-              </div>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Visited Yet?</Form.Label>
+                        <Form.Control name="visited" type="boolean" onChange={this.handleChange}></Form.Control>
+                        <Form.Text className="text-muted">
+                            Have you Visited Your WishList?
+                        </Form.Text>
+                    </Form.Group>
 
                     <div>
-                        <input type="submit" value="Save Changes"></input>
+                        <Button variant='dark' type="submit">Save Changes</Button>
                     </div>
                 </form>
             </div>

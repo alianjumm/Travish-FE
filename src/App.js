@@ -10,7 +10,6 @@ import Logout from './user/Logout';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import Axios from 'axios';
-import Discover from './travish/Discover';
 import jwtDecode from 'jwt-decode'
 import { LinkContainer } from 'react-router-bootstrap'
 import VacationList from './vacation/VacationList';
@@ -104,15 +103,12 @@ export default class App extends Component {
                 {this.state.isAuth ?
                   <>
                     <Nav.Link href="/wishList">Wish List </Nav.Link>
-                    <Nav.Link href="/signout" onClick={this.logoutHandler}>Logout</Nav.Link>
-                    <Nav.Link href="/discovery">Discovery</Nav.Link>
                     <Nav.Link href="/myVacations">My Vacations</Nav.Link>
+                    <Nav.Link href="/signout" onClick={this.logoutHandler}>Logout</Nav.Link>
                   </>
                   :
                   <>
                     <Nav.Link href="/home">Home</Nav.Link>
-                    <Nav.Link href="/discovery">Discovery</Nav.Link>
-
                     <Nav.Link href="/signup">Signup</Nav.Link>
                     <Nav.Link href="/signin">Signin</Nav.Link>
                   </>
@@ -120,22 +116,6 @@ export default class App extends Component {
               </Nav>
             </Container>
           </Navbar>
-
-
-
-
-
-
-
-
-
-          {/* <nav>
-            <div>
-              <Link >Home</Link> {" "}
-              <Link </Link> &nbsp;
-              <Link to="/signin">Signin</Link> &nbsp;
-            </div>
-          </nav> */}
 
 
           <Routes>
@@ -151,7 +131,6 @@ export default class App extends Component {
                 <Route path="/signup" element={<Signup register={this.registerHandler} />}></Route>
                 <Route path="/signin" element={<Signin login={this.loginHandler} />}></Route>
                 <Route path="/home" element={<Home />}></Route>
-                <Route path="/discover" element={<Discover />}></Route>
               </>
             }
           </Routes>

@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
+import { Form, Button } from 'react-bootstrap'
 const token = localStorage.getItem("token")
 console.log(token)
 export default class VacationCreateForm extends Component {
 
-constructor(props) {
-  super(props)
+    constructor(props) {
+        super(props)
 
-  this.state = {
-     newVacation: {}
-  }
-}
+        this.state = {
+            newVacation: {}
+        }
+    }
 
 
 
@@ -17,7 +18,7 @@ constructor(props) {
         const attributeToChange = event.target.name;
         const newValue = event.target.value;
 
-        const vacation = {...this.state.newVacation}
+        const vacation = { ...this.state.newVacation }
         vacation[attributeToChange] = newValue
 
         this.setState({
@@ -29,43 +30,48 @@ constructor(props) {
         event.preventDefault()
         this.props.addVacation(this.state.newVacation)
     }
-    
 
 
 
 
-  render() {
-      console.log(this.state.newVacation)
-    return (
-      <div>
-          <h1>Add a Vacation</h1>
 
-          <form onSubmit={this.handleSubmit}>
-              <div>
-                  <label>Destination</label>
-                  <input name="destination" type="text" onChange={this.handleChange}></input>
-              </div>
+    render() {
+        console.log(this.state.newVacation)
+        return (
+            <div>
+                <h1>Add a Vacation</h1>
 
-              <div>
-                  <label>Flights</label>
-                  <input name="flight" type="text" onChange={this.handleChange}></input>
-              </div>
+                <form onSubmit={this.handleSubmit}>
 
-              <div>
-                  <label>Activities</label>
-                  <input name="visited" type="text" onChange={this.handleChange}></input>
-              </div>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Destination</Form.Label>
+                        <Form.Control name="destination" type="text" onChange={this.handleChange}></Form.Control>
+                        <Form.Text className="text-muted">
+                            Enter a destination for your vacation!
+                        </Form.Text>
+                    </Form.Group>
 
-              <div>
-                  <label>WishList</label>
-                  <input name="visited" type="text" onChange={this.handleChange}></input>
-              </div>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Flights</Form.Label>
+                        <Form.Control name="flight" type="text" onChange={this.handleChange}></Form.Control>
+                        <Form.Text className="text-muted">
+                            What Airline or Flight Number?
+                        </Form.Text>
+                    </Form.Group>
 
-              <div>
-                  <input type="submit" value="Add Vacation!"></input>
-              </div>
-          </form>
-      </div>
-    )
-  }
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Activities</Form.Label>
+                        <Form.Control name="activities" type="text" onChange={this.handleChange} rows={3} />
+                        <Form.Text className="text-muted">
+                            Activities to do there?
+                        </Form.Text>
+                    </Form.Group>
+
+                    <div>
+                        <Button variant='dark' type="submit">Add New Vacation!</Button>
+                    </div>
+                </form>
+            </div>
+        )
+    }
 }

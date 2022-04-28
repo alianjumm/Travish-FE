@@ -26,31 +26,7 @@ export default class WishListList extends Component {
     loadWishList = async () => {
         let res = await axios.get("/wishList/index")
         this.setState({ wishLists: res.data })
-        // Axios.get("/wishList/index")
-        //     .then((response) => {
-        //         console.log(response.data.wishLists);
-        //         this.setState({
-        //             wishLists: response.data.wishLists
-        //         })
-        //     })
-        //     .catch((error) => {
-        //         console.log("Error Fetching Wishlist!!!");
-        //         console.log(error);
-        //     })
-
     }
-
-    // loadWishList = (wishList) => {
-    //     console.log(wishList)
-    //     if (wishList.vacation) {
-    //         const vacations = wishList.vacation.map((vacation, key) => (
-    //             <td key={key}>
-    //                 <li> {vacation.name} </li>
-    //             </td>
-    //         ));
-    //         return vacations;
-    //     }
-    // }
 
     addWishList = (wishList) => {
         axios.post("wishList/add", wishList)

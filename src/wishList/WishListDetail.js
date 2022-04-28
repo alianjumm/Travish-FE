@@ -40,7 +40,7 @@ export default function WishListDetail(props) {
 
     const allVacations = vacations?.map((vacation, index) => {
         return <div key={index}>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem', height: '10rem' }}>
                 <Card.Body>
                     <Card.Title>{vacation.destination}</Card.Title>
                     <Card.Text>
@@ -56,11 +56,11 @@ export default function WishListDetail(props) {
 
     const loadedVac = vacations?.map((vacation, index) => {
         return <div key={index}>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem', height:"10rem" }}>
                 <Card.Body>
                     <Card.Title>{vacation.destination}</Card.Title>
                     <Card.Text>
-                        Flights: {vacation.flight}
+                        <b>Flights:</b> {vacation.flight}
                     </Card.Text>
                     <Button onClick = {()=>handleVacationDelete(vacation._id)} variant="primary">Delete</Button>
                 </Card.Body>
@@ -72,13 +72,13 @@ export default function WishListDetail(props) {
     return (
         <>
             {wishlist &&
-                <div>
+                <div className='classDetail'>
                     <h1>{wishlist.wishList.name}</h1>
                     <div>
                         <p><b>Description:</b> {wishlist.wishList.description}</p>
 
                         {vacations &&
-                        <div>
+                        <div >
                             <h2>Vacations Added</h2>
                             {loadedVac}
                         </div>

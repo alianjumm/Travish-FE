@@ -53,35 +53,14 @@ export default class VacationList extends Component {
   render() {
       console.log(this.state.vacations)
     const allVacations = this.state.vacations.map((vacation, index) => {
-        return <tr key={index}>
-            <Vacation {...vacation} deleteVacation={this.deleteVacation}></Vacation>
-        </tr>
+          return <Card key={index} style={{width: '18rem', height:'10rem'}}>
+          <Vacation {...vacation} deleteVacation={this.deleteVacation}></Vacation>
+      </Card>
     })
     return <div>
     <h1>Vacations</h1>
     <div>
-        <table>
-            <tbody>
-                <tr>
-                    <th>Destination</th>
-                    <th>Flights</th>
-                    <th>Activities</th>
-                </tr>
-                {this.state.vacations.map(function(vacation){
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>{vacation.destination}</Card.Title>
-                        <Card.Text>
-                            {vacation.destination}
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
-                })}
                 {allVacations}
-            </tbody>
-        </table>
     </div>
     <div>
             <VacationCreateForm addVacation={this.addVacation}></VacationCreateForm>

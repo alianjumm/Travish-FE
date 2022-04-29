@@ -16,9 +16,11 @@ export default class WishList extends Component {
                 <Card.Title><b>{this.props.name}</b></Card.Title>
                 <Card.Text><b>Description:</b> {this.props.description}</Card.Text>
                 <Card.Text>{this.props.visited}</Card.Text>
-                <button variant='dark' onClick={() => { this.props.editList(this.props._id) }}>Edit</button>
-                <button variant='dark' onClick={() => { this.props.viewWishList(this.props._id) }}> <Link to= {path}>View</Link></button>
-                <button variant='dark' onClick={() => { this.props.deleteWishList(this.props._id) }}>Delete</button>
+                <Button variant='dark' onClick={() => { this.props.editList(this.props._id) }}>Edit</Button>
+                &nbsp;
+                <Button variant='dark' onClick={() => { this.props.viewWishList(this.props._id) }}> <Link to= {path}>View</Link></Button>
+                &nbsp;
+                <Button variant='danger' onClick={() => { this.props.deleteWishList(this.props._id) }}>Delete</Button>
                 </Card.Body>
             </>
         )

@@ -12,7 +12,8 @@ export default class Vacation extends Component {
                 <Card.Title><b>{this.props.destination}</b></Card.Title>
                 <Card.Text><b>Flight:</b> {this.props.flight}</Card.Text>
                 <Card.Text><b>Activities:</b> {this.props.activities}</Card.Text>
-                <button variant='dark' onClick={() => { this.props.deleteVacation(this.props._id) }}>Delete</button>
+                
+                <Button variant='danger' onClick={() => { this.props.deleteVacation(this.props._id) }}>Delete</Button>
                 </Card.Body>
             </>
         )

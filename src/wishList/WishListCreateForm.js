@@ -36,11 +36,13 @@ export default class WishListCreateForm extends Component {
         console.log(this.state.newWishList)
         return (
             <div>
+                <hr/>
                 <h1>Create a Wish List!</h1>
+                <br/>
                 <form onSubmit={this.handleSubmit}>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label><b>Name</b></Form.Label>
                         <Form.Control name="name" type="text" onChange={this.handleChange}></Form.Control>
                         <Form.Text className="text-muted">
                             Enter a name for your wishlist!
@@ -48,7 +50,7 @@ export default class WishListCreateForm extends Component {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label><b>Description</b></Form.Label>
                         <Form.Control name="description" type="text" onChange={this.handleChange}></Form.Control>
                         <Form.Text className="text-muted">
                             Enter a description for your wishlist!
@@ -56,7 +58,7 @@ export default class WishListCreateForm extends Component {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Visited Yet?</Form.Label>
+                        <Form.Label><b>Visited Yet?</b></Form.Label>
                         <Form.Control name="visited" type="boolean" onChange={this.handleChange}></Form.Control>
                         <Form.Text className="text-muted">
                             Have you Visited Your WishList?
@@ -67,6 +69,7 @@ export default class WishListCreateForm extends Component {
                         <Button variant='dark' type="submit">Create New Wishlist</Button>
                     </div>
                 </form>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </div>
         )
     }

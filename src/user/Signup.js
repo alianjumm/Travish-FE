@@ -12,7 +12,7 @@ export default class Signup extends Component {
     }
 
     registerHandler = () => {
-        this.props.register(this.state)
+        this.props.register(this.state);
     }
 
   render() {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Container, Form, Button} from "react-bootstrap"
 
 export default class Signin extends Component {
-
+   
     state= {}
 
     changeHandler = (e) => {
@@ -12,7 +12,7 @@ export default class Signin extends Component {
     }
 
     loginHandler = () => {
-        this.props.login(this.state)
+        this.props.login(this.state);
     }
 
   render() {

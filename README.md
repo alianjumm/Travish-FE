@@ -1,7 +1,7 @@
 # Travish
 Travish is a travel wish-list app for your planned vacations. It allows you to create multiple wish-lists with seperate vacations inside of it, to seperate all of your trips. Sign up to get full functionality!
 ## Screenshots
-
+git
 
 In the project directory, you can run:
 

@@ -97,7 +97,7 @@ export default class App extends Component {
           <br />
           <Navbar bg="dark" variant="dark">
             <Container>
-              <Navbar.Brand href="#home">Travish</Navbar.Brand>
+              <Navbar.Brand href="/">Travish</Navbar.Brand>
               <Nav className="me-auto">
 
                 {this.state.isAuth ?
@@ -108,7 +108,7 @@ export default class App extends Component {
                   </>
                   :
                   <>
-                    <Nav.Link href="/home">Home</Nav.Link>
+                    <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/signup">Signup</Nav.Link>
                     <Nav.Link href="/signin">Signin</Nav.Link>
                   </>
@@ -126,12 +126,13 @@ export default class App extends Component {
                 <Route path="/signout" element={<Logout logout={this.logoutHandler} />}></Route>
                 <Route path="/myVacations" element={<VacationList />}></Route>
                 <Route path="/wishlist/:id" element={<WishListDetail/>}></Route>
+                <Route path="/" element={<Home/>}></Route>
               </>
               :
               <>
                 <Route path="/signup" element={<Signup register={this.registerHandler} />}></Route>
                 <Route path="/signin" element={<Signin login={this.loginHandler} />}></Route>
-                <Route path="/home" element={<Home />}></Route>
+                <Route path="/" element={<Home/>}></Route>
               </>
             }
           </Routes>
@@ -139,7 +140,7 @@ export default class App extends Component {
 
 
         </Router>
-        <h1>Welcome to Travish!</h1>
+        
         
       </div>
     )

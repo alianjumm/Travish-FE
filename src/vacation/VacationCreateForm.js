@@ -39,12 +39,13 @@ export default class VacationCreateForm extends Component {
         console.log(this.state.newVacation)
         return (
             <div>
+                <br/>
                 <h1>Add a Vacation</h1>
 
                 <form onSubmit={this.handleSubmit}>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Destination</Form.Label>
+                        <Form.Label><b>Destination</b></Form.Label>
                         <Form.Control name="destination" type="text" onChange={this.handleChange}></Form.Control>
                         <Form.Text className="text-muted">
                             Enter a destination for your vacation!
@@ -52,7 +53,7 @@ export default class VacationCreateForm extends Component {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Flights</Form.Label>
+                        <Form.Label><b>Flights</b></Form.Label>
                         <Form.Control name="flight" type="text" onChange={this.handleChange}></Form.Control>
                         <Form.Text className="text-muted">
                             What Airline or Flight Number?
@@ -60,7 +61,7 @@ export default class VacationCreateForm extends Component {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Activities</Form.Label>
+                        <Form.Label><b>Activities</b></Form.Label>
                         <Form.Control name="activities" type="text" onChange={this.handleChange} rows={3} />
                         <Form.Text className="text-muted">
                             Activities to do there?

@@ -85,18 +85,16 @@ export default class WishListList extends Component {
     render() {
         console.log(this.state)
         const allWishLists = this.state.wishLists.map((wishList, index) => {
-            // return <tr key={index}>
-            //     <WishList {...wishList} editList={this.editList} editWishList={this.editWishList} deleteWishList={this.deleteWishList}></WishList>
-            // </tr>
-            return <Card key={index} style={{width: '18rem', height:'10rem'}}>
+            return <Card class='card' key={index} bg='secondary' text='light' style={{width: '15rem', height:'10rem'}}> 
                 <WishList {...wishList} editList={this.editList} editWishList={this.editWishList} deleteWishList={this.deleteWishList}></WishList>
             </Card>
 
         })
 
         return <div>
-            <h1>Wish List</h1>
-            <div>
+            
+            <h1 class='wishList'>Wish List</h1>
+            <div className='card-wish'>
             {allWishLists}
             </div>
             <div>

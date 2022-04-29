@@ -12,10 +12,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.vacationDetail {
-  text-align: center;
+
+.card {
+  margin-top: 10px !important;
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+  margin-left: 10px;
 }
-.allVacations {
-  text-align: center;
-  width: 25rem;
+
+.card-wish{ 
+  display: flex;
+  flex-direction: row;
+}
+
+.wishList {
+  margin-left: 10px;
+}
+
+.create {
+  margin-left: 10px;
+  max-width: 600px;
+}
+
+.edit {
+  margin-left: 10px;
+  max-width: 600px;
 }

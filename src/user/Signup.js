@@ -21,33 +21,37 @@ export default class Signup extends Component {
       <div>
           <br/>
           
-          <h1>Sign Up</h1>
+          <h1 id='signuph1'>Sign Up</h1>
           <br/>
+          <div>
           <Container>
               <Form.Group>
                   <Form.Label>First Name</Form.Label>
-                  <Form.Control name="firstName" onChange={this.changeHandler}></Form.Control>
+                  <Form.Control name="firstName" onChange={this.changeHandler} placeholder='First Name'></Form.Control>
               </Form.Group>
 
               <Form.Group>
                   <Form.Label>Last Name</Form.Label>
-                  <Form.Control name="lastName" onChange={this.changeHandler}></Form.Control>
+                  <Form.Control name="lastName" onChange={this.changeHandler} placeholder='Last Name'></Form.Control>
               </Form.Group>
 
               <Form.Group>
                   <Form.Label>Email Address</Form.Label>
-                  <Form.Control name="emailAddress" onChange={this.changeHandler}></Form.Control>
+                  <Form.Control name="emailAddress" onChange={this.changeHandler} placeholder='Email Address'></Form.Control>
+                  <Form.Text className='text-muted'>Enter a valid email</Form.Text>
               </Form.Group>
 
               <Form.Group>
                   <Form.Label>Password</Form.Label>
-                  <Form.Control name="password" type="password" onChange={this.changeHandler}></Form.Control>
+                  <Form.Control name="password" type="password" onChange={this.changeHandler} placeholder='Password'></Form.Control>
+                  <Form.Text className='text-muted'>Enter a valid password</Form.Text>
               </Form.Group>
 
-              <Button varient="primary" onClick={this.registerHandler}>
+              <Button id='signupbutton' varient="primary" onClick={this.registerHandler}>
                   Register
                   </Button>
           </Container>
+          </div>
       </div>
     )
   }

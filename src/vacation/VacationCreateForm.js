@@ -38,7 +38,7 @@ export default class VacationCreateForm extends Component {
     render() {
         console.log(this.state.newVacation)
         return (
-            <div>
+            <div className='vacation-add'>
                 <br/>
                 <h1>Add a Vacation</h1>
 
@@ -72,6 +72,7 @@ export default class VacationCreateForm extends Component {
                         <Button variant='dark' type="submit">Add New Vacation!</Button>
                     </div>
                 </form>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </div>
         )
     }

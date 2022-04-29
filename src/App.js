@@ -90,14 +90,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Router>
 
 
           <br />
           <Navbar bg="dark" variant="dark">
             <Container>
-              <Navbar.Brand href="/">Travish</Navbar.Brand>
+              <Navbar.Brand class='tavish' href="/">Travish</Navbar.Brand>
               <Nav className="me-auto">
 
                 {this.state.isAuth ?
@@ -105,12 +105,15 @@ export default class App extends Component {
                     <Nav.Link href="/wishList">Wish List </Nav.Link>
                     <Nav.Link href="/myVacations">My Vacations</Nav.Link>
                     <Nav.Link href="/signout" onClick={this.logoutHandler}>Logout</Nav.Link>
+                    
                   </>
                   :
                   <>
+                    
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/signup">Signup</Nav.Link>
                     <Nav.Link href="/signin">Signin</Nav.Link>
+                    
                   </>
                 }
               </Nav>

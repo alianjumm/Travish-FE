@@ -53,14 +53,14 @@ export default class VacationList extends Component {
     render() {
         console.log(this.state.vacations)
         const allVacations = this.state.vacations.map((vacation, index) => {
-            return <Card key={index} style={{ width: 'auto', height: 'auto' }}> 
+            return <Card key={index} style={{ width: 'auto', height: 'auto', backgroundColor:'#bcbfbb' }}> 
                 <Vacation {...vacation} deleteVacation={this.deleteVacation}></Vacation>
             </Card>
         })
         return <div>
-            <h1>Vacations</h1>
+            <h1 class='vacations'>Vacations</h1>
             <br/>
-            <div class='flex-container'>
+            <div class='vacations-list'>
                 {allVacations}
             </div>
             <div>

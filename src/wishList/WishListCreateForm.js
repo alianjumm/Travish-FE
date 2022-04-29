@@ -61,7 +61,7 @@ export default class WishListCreateForm extends Component {
                         <Form.Label><b>Visited Yet?</b></Form.Label>
                         <Form.Control name="visited" type="boolean" onChange={this.handleChange}></Form.Control>
                         <Form.Text className="text-muted">
-                            Have you Visited Your WishList?
+                            Have you Visited Your WishList? Type: True or False.
                         </Form.Text>
                     </Form.Group>
 

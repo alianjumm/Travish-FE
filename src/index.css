@@ -17,10 +17,24 @@ code {
   display: flex;
   flex-direction: row;
   margin-right: 10px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .card-wish{ 
   display: flex;
   flex-direction: row;
+}
+
+.wishList {
+  margin-left: 10px;
+}
+
+.create {
+  margin-left: 10px;
+  max-width: 600px;
+}
+
+.edit {
+  margin-left: 10px;
+  max-width: 600px;
 }

@@ -97,7 +97,7 @@ export default class App extends Component {
           <br />
           <Navbar bg="dark" variant="dark">
             <Container>
-              <Navbar.Brand href="#home">Travish</Navbar.Brand>
+              <Navbar.Brand href="/">Travish</Navbar.Brand>
               <Nav className="me-auto">
 
                 {this.state.isAuth ?

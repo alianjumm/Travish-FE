@@ -31,7 +31,8 @@ export default class WishListEditForm extends Component {
     render() {
         console.log(this.state.newWishList)
         return (
-            <div>
+            <div className='edit'>
+                <hr/><br/>
                 <h1>Edit WishList</h1>
 
                 <form onSubmit={this.handleSubmit}>

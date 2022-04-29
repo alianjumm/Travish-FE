@@ -92,7 +92,8 @@ export default class WishListList extends Component {
         })
 
         return <div>
-            <h1>Wish List</h1>
+            
+            <h1 class='wishList'>Wish List</h1>
             <div className='card-wish'>
             {allWishLists}
             </div>

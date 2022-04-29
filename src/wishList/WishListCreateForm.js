@@ -35,7 +35,7 @@ export default class WishListCreateForm extends Component {
     render() {
         console.log(this.state.newWishList)
         return (
-            <div>
+            <div className='create'>
                 <hr/>
                 <h1>Create a Wish List!</h1>
                 <br/>

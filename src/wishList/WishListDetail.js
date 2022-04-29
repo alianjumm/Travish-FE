@@ -41,7 +41,7 @@ export default function WishListDetail(props) {
 
     const allVacations = vacations?.map((vacation, index) => {
         return <div key={index}>
-            <Card style={{ width: '18rem' }}>
+            <Card bg="dark" text="light" style={{ width: 'auto' }}>
                 <Card.Body>
                     <Card.Title>{vacation.destination}</Card.Title>
                     <Card.Text>
@@ -58,23 +58,26 @@ export default function WishListDetail(props) {
         <>
             {wishlist &&
                 <div>
+                    <div class="vacationDetail">
                     <h1>{wishlist.wishList.name}</h1>
-                    <div>
                         <p><b>Description:</b> {wishlist.wishList.description}</p>
 
+                    </div>
+                    <div>
+
                         {vacations &&
-                            <div>
+                            <div class="allVacations">
                                 <h2>Vacations Added</h2> 
                                 {wishlist.wishList.vacation.map((vacation, index) => { 
                                    return <div key={index}>
                                         
-                                        <Card style={{ width: '18rem' }}>
+                                        <Card bg="dark" text="light" style={{ width: 'auto' }}>
                                             <Card.Body>
                                                 <Card.Title>{vacation.destination}</Card.Title>
                                                 <Card.Text>
                                                     Flights: {vacation.flight}
                                                 </Card.Text>
-                                                <Button onClick={() => handleVacationDelete(vacation._id)} variant="primary">Delete</Button>
+                                                <Button onClick={() => handleVacationDelete(vacation._id)} variant="danger">Delete</Button>
                                             </Card.Body>
                                         </Card>
 
@@ -87,7 +90,7 @@ export default function WishListDetail(props) {
                         <br />
 
                         {vacations &&
-                            <div>
+                            <div class="allVacations">
                                 <h2>All Vacations</h2>
                                 {allVacations}
                             </div>

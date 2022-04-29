@@ -57,7 +57,7 @@ export default function WishListDetail(props) {
     return (
         <>
             {wishlist &&
-                <div>
+                <div class="viewPage">
                     <div class="vacationDetail">
                     <h1>{wishlist.wishList.name}</h1>
                         <p><b>Description:</b> {wishlist.wishList.description}</p>

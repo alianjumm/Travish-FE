@@ -19,19 +19,20 @@ export default class Signin extends Component {
       console.log(this.state)
     return (
       <div>
-          <h1>Sign In</h1>
+          <h1 id='signinh1'>Sign In</h1>
           <Container>
-              <Form.Group>
+              <Form.Group className="mb-3" controlId='formBasicEmail'>
                   <Form.Label>Email Address</Form.Label>
-                  <Form.Control name="emailAddress" onChange={this.changeHandler}></Form.Control>
+                  <Form.Control name="emailAddress" onChange={this.changeHandler} placeholder='Enter Email'></Form.Control>
+                  <Form.Text className='text-muted'>Enter a valid email</Form.Text>
               </Form.Group>
 
-              <Form.Group>
+              <Form.Group className="mb-3" controlId='formBasicPassword'>
                   <Form.Label>Password</Form.Label>
-                  <Form.Control name="password" type="password" onChange={this.changeHandler}></Form.Control>
+                  <Form.Control name="password" type="password" onChange={this.changeHandler} placeholder='Password'></Form.Control>
               </Form.Group>
 
-              <Button varient="primary" onClick={this.loginHandler}>
+              <Button id='signinbutton' varient="primary" onClick={this.loginHandler}>
                   Login
                   </Button>
           </Container>

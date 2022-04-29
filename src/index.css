@@ -44,5 +44,16 @@ code {
 }
 .allVacations {
   text-align: center;
-  width: 25rem;
+}
+#signuph1 {
+  text-align: center;
+}
+#signinh1 {
+  text-align: center;
+}
+#signinbutton {
+  margin-top: 10px;
+}
+#signupbutton {
+  margin-top: 10px;
 }
